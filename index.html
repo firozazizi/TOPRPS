@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert("Let's play rock paper scissors!");
+        
+        const playerSelection = prompt('What is your choice?').toLowerCase();
+
+
+        function computerPlay() {
+            const generate = Math.floor(Math.random()*3) + 1;
+            if (generate === 1) {
+                return 'rock'
+            } else if (generate === 2) {
+                return 'paper'
+            } else {
+                return 'scissors'
+            }
+        }
+       
+        const computerSelection = computerPlay();
+
+        function playRound(playerSelection, computerSelection) {
+            alert(`Computer chose: ${computerSelection}`);
+            if (playerSelection === computerSelection) {
+                return alert('Tie!');
+            } else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+                        playerSelection === 'paper' && computerSelection === 'rock' ||
+                        playerSelection === 'scissors' && computerSelection === 'paper' ) {
+                    return alert('You win!');
+            } else if (playerSelection === 'scissors' && computerSelection === 'rock' ||
+                        playerSelection === 'rock' && computerSelection === 'paper' ||
+                        playerSelection === 'paper' && computerSelection === 'scissors' ) {
+                    return alert('You lose!');
+            }
+        }
+        
+        function game() {
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+            playRound();
+        }
+         
+    </script>    
+</body>
+</html>
