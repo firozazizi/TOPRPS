@@ -50,34 +50,117 @@
         
             let playerScore = 0;
             let computerScore = 0;
-            
-            if (computerScore > 4) {
-                alert ('Sorry, you lost the game')
-            }
-            if (playerScore > 4) {
-                alert ('You won the game!')
-            }
-            
-            playRound(playerSelection, computerSelection);
+            let tieScore = 0;
+
 
             
+            if (computerScore === 0) {
+                replayRound();
+            } 
+            
+            if (computerScore === 1) {
+                replayRound();
+            }
+
+            if (computerScore === 2) {
+                replayRound();
+            }
+
+            if (computerScore === 3) {
+                replayRound();
+            }
+
+            if (computerScore === 4) {
+                replayRound();
+            }
+
+            if (computerScore === 5) {
+                alert('You lost the game! :(')
+            }
+
+            if (playerScore === 0) {
+                replayRound();
+            } 
+            
+            if (playerScore === 1) {
+                replayRound();
+            }
+
+            if (playerScore === 2) {
+                replayRound();
+            }
+
+            if (playerScore === 3) {
+                replayRound();
+            }
+
+            if (playerScore === 4) {
+                replayRound();
+            }
+
+            if (playerScore === 5) {
+                alert('You won the game! :)')
+            }
+
+            if (tieScore === 1) {
+                replayRound();
+            }
+            if (tieScore === 2) {
+                replayRound();
+            }
+            if (tieScore === 3) {
+                replayRound();
+            }
+            if (tieScore === 4) {
+                replayRound();
+            }
+            if (tieScore === 5) {
+                replayRound();
+            }
+            if (tieScore === 6) {
+                replayRound();
+            }
+            if (tieScore === 7) {
+                replayRound();
+            }
+            if (tieScore === 8) {
+                replayRound();
+            }
+            if (tieScore === 9) {
+                replayRound();
+            }
+            if (tieScore === 10) {
+                replayRound();
+            }
+            if (tieScore === 11) {
+                replayRound();
+            }
+            if (tieScore === 12) {
+                replayRound();
+            }
+            
+            
+            
+            function replayRound() {
+            playRound(playerSelection, computerSelection);
             if (computerWin === 0) {
+                tieScore++;
                 alert('Tie!');
                 let playerSelection = prompt('What is your choice?').toLowerCase();;
             }
-            else if (computerWin === 1) {
+            if (computerWin === 1) {
                 playerScore++;
                 alert(`You win the round! Your score is now: ${playerScore}.`);
                 let playerSelection = prompt('What is your choice?').toLowerCase();;
             }
-            else if (computerWin === 2) {
+            if (computerWin === 2) {
                 computerScore++;
                 alert(`You lost the round! The computer score is now: ${computerScore}.`);
                 playerSelection = prompt('What is your choice?').toLowerCase();;
             }
 
+            }
         }
-    
     </script>    
 </body>
 </html>
