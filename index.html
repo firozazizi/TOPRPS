@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <script>
-        alert("Let's play a 5 round game of rock paper scissors!");
-        
-        function computerPlay() {
-                const generate = Math.floor(Math.random()*3) + 1;
+    
+        function game() {
+            
+            alert("Let's play a 3 round game of rock paper scissors!")
+            let playerSelection = prompt('What is your choice?').toLowerCase();
+            let computerSelection = computerPlay();
+    
+            let playerScore = 0;
+            let computerScore = 0;
+    
+            function computerPlay() {
+                let generate = Math.floor(Math.random()*3) + 1;
                 if (generate === 1) {
                     return 'rock'
                 } else if (generate === 2) {
@@ -20,147 +28,93 @@
                     return 'scissors'
                 }
             }
-
-        game();
-
-       
-        function game() {
-            let computerWin;
+    
+            function getPlayerScore() {
+                return playerScore++;
+            }
             
-            let computerSelection = computerPlay();
-            let playerSelection = prompt('What is your choice?').toLowerCase();
-
-
-            function playRound(playerSelection, computerSelection) {
+            function getCPUScore() {
+                return computerScore++;
+            }
+    
+            function replayTie() {
                 computerSelection = computerPlay();
-                alert(`Computer chose: ${computerSelection}`);
-                if (playerSelection === computerSelection) {
-                    return computerWin = 0;
-                } else if (playerSelection === 'rock' && computerSelection === 'scissors' ||
-                        playerSelection === 'paper' && computerSelection === 'rock' ||
-                        playerSelection === 'scissors' && computerSelection === 'paper' ) {
-                    return computerWin = 1;
-                } else if (playerSelection === 'scissors' && computerSelection === 'rock' ||
-                        playerSelection === 'rock' && computerSelection === 'paper' ||
-                        playerSelection === 'paper' && computerSelection === 'scissors' ) {
-                    return computerWin = 2;
-                    
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
+            }
+    
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection === 'rock' && computerSelection === 'paper') {
+                    getCPUScore();
+                    alert(`You lose! Paper beats rock. Your score is ${playerScore} and the computer's score is ${computerScore}`);
+                } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+                    getCPUScore();
+                    alert(`You lose! Scissors beat paper. Your score is ${playerScore} and the computer's score is ${computerScore}`);
+                } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+                    getCPUScore();
+                    alert(`You lose! Rock beats scissors. Your score is ${playerScore} and the computer's score is ${computerScore}`);
+                } else if (computerSelection === 'rock' && playerSelection === 'paper') {
+                    getPlayerScore();
+                    alert(`You win! Paper beats rock. Your score is ${playerScore} and the computer's score is ${computerScore}`);
+                } else if (computerSelection === 'paper' && playerSelection === 'scissors') {
+                    getPlayerScore();
+                    alert(`You win! Scissors beat paper. Your score is ${playerScore} and the computer's score is ${computerScore}`);
+                } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
+                    getPlayerScore();
+                    alert(`You win! Rock beats scissors. Your score is ${playerScore} and the computer's score is ${computerScore}`);
+                } else {
+                    alert('It was a tie.');
+                    replayTie();
                 }
-            }
-        
-            let playerScore = 0;
-            let computerScore = 0;
-            let tieScore = 0;
-
-
-            
-            if (computerScore === 0) {
-                replayRound();
-            } 
-            
-            if (computerScore === 1) {
-                replayRound();
-            }
-
-            if (computerScore === 2) {
-                replayRound();
-            }
-
-            if (computerScore === 3) {
-                replayRound();
-            }
-
-            if (computerScore === 4) {
-                replayRound();
-            }
-
-            if (computerScore === 5) {
-                alert('You lost the game! :(')
-            }
-
-            if (playerScore === 0) {
-                replayRound();
-            } 
-            
-            if (playerScore === 1) {
-                replayRound();
-            }
-
-            if (playerScore === 2) {
-                replayRound();
-            }
-
-            if (playerScore === 3) {
-                replayRound();
-            }
-
-            if (playerScore === 4) {
-                replayRound();
-            }
-
-            if (playerScore === 5) {
-                alert('You won the game! :)')
-            }
-
-            if (tieScore === 1) {
-                replayRound();
-            }
-            if (tieScore === 2) {
-                replayRound();
-            }
-            if (tieScore === 3) {
-                replayRound();
-            }
-            if (tieScore === 4) {
-                replayRound();
-            }
-            if (tieScore === 5) {
-                replayRound();
-            }
-            if (tieScore === 6) {
-                replayRound();
-            }
-            if (tieScore === 7) {
-                replayRound();
-            }
-            if (tieScore === 8) {
-                replayRound();
-            }
-            if (tieScore === 9) {
-                replayRound();
-            }
-            if (tieScore === 10) {
-                replayRound();
-            }
-            if (tieScore === 11) {
-                replayRound();
-            }
-            if (tieScore === 12) {
-                replayRound();
-            }
-            
-            
-            
-            function replayRound() {
+            }   
             playRound(playerSelection, computerSelection);
-            if (computerWin === 0) {
-                tieScore++;
-                alert('Tie!');
-                let playerSelection = prompt('What is your choice?').toLowerCase();;
+    
+            if (computerScore === 1 || playerScore === 0){
+                computerSelection = computerPlay();
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
             }
-            if (computerWin === 1) {
-                playerScore++;
-                alert(`You win the round! Your score is now: ${playerScore}.`);
-                let playerSelection = prompt('What is your choice?').toLowerCase();;
+    
+            if (computerScore === 0 || playerScore === 1){
+                computerSelection = computerPlay();
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
             }
-            if (computerWin === 2) {
-                computerScore++;
-                alert(`You lost the round! The computer score is now: ${computerScore}.`);
-                playerSelection = prompt('What is your choice?').toLowerCase();;
+    
+            if (computerScore === 1 || playerScore === 1) {
+                computerSelection = computerPlay();
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
             }
-
+    
+            if (computerScore === 2 || playerScore === 1) {
+                computerSelection = computerPlay();
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
+            }
+            
+            if (computerScore === 1 || playerScore == 2) {
+                computerSelection = computerPlay();
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
+            }
+    
+            if (computerScore === 2 || playerScore == 2) {
+                computerSelection = computerPlay();
+                playerSelection = prompt('What is your choice?').toLowerCase();
+                playRound(playerSelection, computerSelection);
+            }
+    
+            
+            if (computerScore > 2) {
+                alert('You lost the game!')
+            } else if (playerScore > 2) {
+                alert('You won the game!')
             }
         }
-    </script>    
+    
+        game();
+    
+        </script>
 </body>
 </html>
