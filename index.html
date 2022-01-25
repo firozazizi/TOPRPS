@@ -9,16 +9,15 @@
 <body>
     <script>
     
-        function game() {
+    function game() {
             
-            alert("Let's play a 3 round game of rock paper scissors!")
-            let playerSelection = prompt('What is your choice?').toLowerCase();
+            
             let computerSelection = computerPlay();
-    
             let playerScore = 0;
             let computerScore = 0;
     
             function computerPlay() {
+                // generates r/p/s for computer
                 let generate = Math.floor(Math.random()*3) + 1;
                 if (generate === 1) {
                     return 'rock'
@@ -37,7 +36,7 @@
                 return computerScore++;
             }
     
-            function replayTie() {
+            function replay() {
                 computerSelection = computerPlay();
                 playerSelection = prompt('What is your choice?').toLowerCase();
                 playRound(playerSelection, computerSelection);
@@ -62,11 +61,17 @@
                 } else if (computerSelection === 'scissors' && playerSelection === 'rock') {
                     getPlayerScore();
                     alert(`You win! Rock beats scissors. Your score is ${playerScore} and the computer's score is ${computerScore}`);
-                } else {
+                } else if (playerSelection === computerSelection) {
                     alert('It was a tie.');
-                    replayTie();
+                    replay();
+                } else {
+                    alert('Please type rock, paper or scissors.');
+                    replay();
                 }
-            }   
+            }
+            
+            alert("Let's play a 3 round game of rock paper scissors!")
+            let playerSelection = prompt('What is your choice?').toLowerCase();
             playRound(playerSelection, computerSelection);
     
             if (computerScore === 1 || playerScore === 0){
@@ -111,9 +116,9 @@
             } else if (playerScore > 2) {
                 alert('You won the game!')
             }
-        }
+    }
     
-        game();
+    game();
     
         </script>
 </body>
